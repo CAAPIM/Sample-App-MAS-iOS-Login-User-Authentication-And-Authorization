@@ -150,7 +150,6 @@
 				CB4321D11D6615D600FFCF20 /* Resources */,
 				CB4322061D661C5B00FFCF20 /* Embed Frameworks */,
 				38FC911E9E4246261F88B306 /* [CP] Embed Pods Frameworks */,
-				C7A0D93DCBE8B04144112E70 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,21 +248,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MASAuthentication/Pods-MASAuthentication-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C7A0D93DCBE8B04144112E70 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MASAuthentication/Pods-MASAuthentication-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
