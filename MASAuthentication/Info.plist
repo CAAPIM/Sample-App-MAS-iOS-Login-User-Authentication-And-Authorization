@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSFaceIDUsageDescription</key>
-	<string>US526918 : [MASFoundation][iOS] NSFaceIDUsageDescription is required to enable FaceID</string>
+	<string>The application must access FaceID to unlock the user session with FaceID-enabled devices.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
