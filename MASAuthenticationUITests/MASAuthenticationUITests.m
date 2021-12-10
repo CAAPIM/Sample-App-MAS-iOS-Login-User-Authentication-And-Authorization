@@ -10,6 +10,7 @@
 
 @interface MASAuthenticationUITests : XCTestCase
 
+@property(nonatomic,strong) XCUIApplication *app;
 @end
 
 @implementation MASAuthenticationUITests
@@ -21,6 +22,9 @@
     self.continueAfterFailure = NO;
 
     // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+    
+    _app = [[XCUIApplication alloc] init];
+
 }
 
 - (void)tearDown {
@@ -42,6 +46,33 @@
         [self measureWithMetrics:@[[[XCTApplicationLaunchMetric alloc] init]] block:^{
             [[[XCUIApplication alloc] init] launch];
         }];
+    }
+}
+
+
+- (void)test_ExplicitLogIn {
+    
+    [_app launch];
+
+    XCUIElement *okButton = _app.alerts.buttons[@"OK"];
+    if([okButton exists]){
+        [okButton tap];
+    }
+
+    [_app.staticTexts[@"Explicit Login"] tap];
+
+    XCUIElement *userElement = _app.alerts.textFields[@"Username"];
+    XCUIElement *passwordElement = _app.alerts.secureTextFields[@"Password"];
+    
+    [userElement tap];
+    [userElement typeText:@"admin"];
+    
+    [passwordElement tap];
+    [passwordElement typeText:@"7layer"];
+
+    XCUIElement *okButton1 = _app.alerts.buttons[@"OK"];
+    if([okButton1 exists]){
+        [okButton1 tap];
     }
 }
 
