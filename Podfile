@@ -6,5 +6,3 @@ target 'MASAuthentication' do
   pod 'MASFoundation', '~> 2.1.00'
   pod 'MASUI', '~> 2.1.00'
 end
-
-
