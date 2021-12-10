@@ -15,7 +15,19 @@
 		CB4321E21D6615D700FFCF20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB4321E11D6615D700FFCF20 /* Assets.xcassets */; };
 		CB4321E51D6615D700FFCF20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB4321E31D6615D700FFCF20 /* LaunchScreen.storyboard */; };
 		CB4321E81D6615D700FFCF20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB4321E61D6615D700FFCF20 /* Main.storyboard */; };
+		FBF0485D27635CD900B37AEF /* MASAuthenticationUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF0485C27635CD900B37AEF /* MASAuthenticationUITests.m */; };
+		FBF0485F27635CD900B37AEF /* MASAuthenticationUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF0485E27635CD900B37AEF /* MASAuthenticationUITestsLaunchTests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FBF0486027635CD900B37AEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB4321CB1D6615D600FFCF20 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB4321D21D6615D600FFCF20;
+			remoteInfo = MASAuthentication;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		CB4322061D661C5B00FFCF20 /* Embed Frameworks */ = {
@@ -46,6 +58,9 @@
 		CB4321E91D6615D700FFCF20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB4321EF1D6615E200FFCF20 /* MASAuthentication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MASAuthentication.entitlements; sourceTree = "<group>"; };
 		D12DDBA009D4FA9340D33A7A /* libPods-MASAuthentication.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MASAuthentication.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF0485A27635CD900B37AEF /* MASAuthenticationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MASAuthenticationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF0485C27635CD900B37AEF /* MASAuthenticationUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASAuthenticationUITests.m; sourceTree = "<group>"; };
+		FBF0485E27635CD900B37AEF /* MASAuthenticationUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASAuthenticationUITestsLaunchTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +69,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F610C618D73946F1DC892B7 /* libPods-MASAuthentication.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBF0485727635CD900B37AEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +104,7 @@
 			children = (
 				48DD944B1FE9C4A200237624 /* msso_config.json */,
 				CB4321D51D6615D600FFCF20 /* MASAuthentication */,
+				FBF0485B27635CD900B37AEF /* MASAuthenticationUITests */,
 				CB4321D41D6615D600FFCF20 /* Products */,
 				98DF401B9EFFBA00D198BF24 /* Pods */,
 				A8DCA9E8AC54BB5F905E5B22 /* Frameworks */,
@@ -92,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				CB4321D31D6615D600FFCF20 /* MASAuthentication.app */,
+				FBF0485A27635CD900B37AEF /* MASAuthenticationUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +161,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		FBF0485B27635CD900B37AEF /* MASAuthenticationUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FBF0485C27635CD900B37AEF /* MASAuthenticationUITests.m */,
+				FBF0485E27635CD900B37AEF /* MASAuthenticationUITestsLaunchTests.m */,
+			);
+			path = MASAuthenticationUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,6 +193,24 @@
 			productReference = CB4321D31D6615D600FFCF20 /* MASAuthentication.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FBF0485927635CD900B37AEF /* MASAuthenticationUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBF0486427635CD900B37AEF /* Build configuration list for PBXNativeTarget "MASAuthenticationUITests" */;
+			buildPhases = (
+				FBF0485627635CD900B37AEF /* Sources */,
+				FBF0485727635CD900B37AEF /* Frameworks */,
+				FBF0485827635CD900B37AEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FBF0486127635CD900B37AEF /* PBXTargetDependency */,
+			);
+			name = MASAuthenticationUITests;
+			productName = MASAuthenticationUITests;
+			productReference = FBF0485A27635CD900B37AEF /* MASAuthenticationUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -177,6 +228,11 @@
 							};
 						};
 					};
+					FBF0485927635CD900B37AEF = {
+						CreatedOnToolsVersion = 13.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CB4321D21D6615D600FFCF20;
+					};
 				};
 			};
 			buildConfigurationList = CB4321CE1D6615D600FFCF20 /* Build configuration list for PBXProject "MASAuthentication" */;
@@ -184,6 +240,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -193,6 +250,7 @@
 			projectRoot = "";
 			targets = (
 				CB4321D21D6615D600FFCF20 /* MASAuthentication */,
+				FBF0485927635CD900B37AEF /* MASAuthenticationUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -206,6 +264,13 @@
 				CB4321E21D6615D700FFCF20 /* Assets.xcassets in Resources */,
 				CB4321E51D6615D700FFCF20 /* LaunchScreen.storyboard in Resources */,
 				48DD944C1FE9C4A300237624 /* msso_config.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBF0485827635CD900B37AEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +328,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FBF0485627635CD900B37AEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBF0485F27635CD900B37AEF /* MASAuthenticationUITestsLaunchTests.m in Sources */,
+				FBF0485D27635CD900B37AEF /* MASAuthenticationUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FBF0486127635CD900B37AEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB4321D21D6615D600FFCF20 /* MASAuthentication */;
+			targetProxy = FBF0486027635CD900B37AEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CB4321E31D6615D700FFCF20 /* LaunchScreen.storyboard */ = {
@@ -411,6 +493,77 @@
 			};
 			name = Release;
 		};
+		FBF0486227635CD900B37AEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.com.MASAuthenticationUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MASAuthentication;
+			};
+			name = Debug;
+		};
+		FBF0486327635CD900B37AEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.com.MASAuthenticationUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MASAuthentication;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -428,6 +581,15 @@
 			buildConfigurations = (
 				CB4321ED1D6615D700FFCF20 /* Debug */,
 				CB4321EE1D6615D700FFCF20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBF0486427635CD900B37AEF /* Build configuration list for PBXNativeTarget "MASAuthenticationUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBF0486227635CD900B37AEF /* Debug */,
+				FBF0486327635CD900B37AEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
