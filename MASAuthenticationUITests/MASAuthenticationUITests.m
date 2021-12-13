@@ -69,11 +69,14 @@
     
     [passwordElement tap];
     [passwordElement typeText:@"7layer"];
-
-    XCUIElement *okButton1 = _app.alerts.buttons[@"OK"];
-    if([okButton1 exists]){
-        [okButton1 tap];
+    
+    XCUIElement *loginSuccessAlert = _app.alerts.buttons[@"OK"];
+    if([loginSuccessAlert exists]){
+        [loginSuccessAlert tap];
     }
+    
+    XCUIElement *successMessageLabel = _app.staticTexts[@"Authentication status: authenticated as admin"];
+    XCTAssert(successMessageLabel.exists);
 }
 
 @end
