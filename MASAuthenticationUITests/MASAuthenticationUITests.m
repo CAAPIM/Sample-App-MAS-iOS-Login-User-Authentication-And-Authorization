@@ -8,6 +8,20 @@
 
 #import <XCTest/XCTest.h>
 
+#define USER_NAME                         @"admin"
+#define PASSWORD                          @"7layer"
+#define USER_TEXTFIELD                    @"Username"
+#define PASSWORD_TEXTFIELD                @"Password"
+#define OK_BUTTON                         @"OK"
+#define SUCCESS_MESSAGE                   @"Login was successful"
+#define Explicit_Login                    @"Explicit Login"
+#define Authentication_SUCCESS            @"Authentication status: authenticated as admin"
+#define SYSTEM_ALERT_HANDLER              @"SystemAlertHandler"
+#define ALLOW_ONCE                        @"Allow Once"
+#define TIME_INTERVAL                     5
+
+
+
 @interface MASAuthenticationUITests : XCTestCase
 
 @property(nonatomic,strong) XCUIApplication *app;
@@ -49,34 +63,58 @@
     }
 }
 
+- (void)checkSystemAlerts {
+    
+    [self addUIInterruptionMonitorWithDescription:SYSTEM_ALERT_HANDLER handler:^BOOL(XCUIElement * _Nonnull interruptingElement) {
+        NSString * allowOnce = ALLOW_ONCE;
+        XCUIElementQuery * buttons = interruptingElement.buttons;
+        if ([buttons[allowOnce] exists]) {
+            [buttons[allowOnce] tap];
+            return YES;
+        }
+        return NO;
+    }];
+}
 
 - (void)test_ExplicitLogIn {
     
     [_app launch];
+    [self checkSystemAlerts];
 
-    XCUIElement *okButton = _app.alerts.buttons[@"OK"];
+    XCUIElement *alertRegisterGW = _app.alerts.buttons[OK_BUTTON];
+    if([alertRegisterGW exists]){
+        [alertRegisterGW tap];
+    }
+
+    [_app.staticTexts[Explicit_Login] tap];
+    
+    XCUIElement *userElement = _app.alerts.textFields[USER_TEXTFIELD];
+    XCUIElement *passwordElement = _app.alerts.secureTextFields[PASSWORD_TEXTFIELD];
+    
+    [userElement tap];
+    [userElement typeText:USER_NAME];
+    
+    [passwordElement tap];
+    [passwordElement typeText:PASSWORD];
+    
+    XCUIElement *okButton = _app.alerts.buttons[OK_BUTTON];
     if([okButton exists]){
         [okButton tap];
     }
-
-    [_app.staticTexts[@"Explicit Login"] tap];
-
-    XCUIElement *userElement = _app.alerts.textFields[@"Username"];
-    XCUIElement *passwordElement = _app.alerts.secureTextFields[@"Password"];
     
-    [userElement tap];
-    [userElement typeText:@"admin"];
+    BOOL okButtonLoginSuccess = [_app.alerts.buttons[OK_BUTTON] waitForExistenceWithTimeout:TIME_INTERVAL];
+    XCTAssert(okButtonLoginSuccess);
     
-    [passwordElement tap];
-    [passwordElement typeText:@"7layer"];
-    
-    XCUIElement *loginSuccessAlert = _app.alerts.buttons[@"OK"];
-    if([loginSuccessAlert exists]){
-        [loginSuccessAlert tap];
+    if(okButtonLoginSuccess) {
+        XCTAssert([_app.alerts.staticTexts[SUCCESS_MESSAGE] exists]);
+        XCUIElement *loginSuccessAlert = _app.alerts.buttons[OK_BUTTON];
+        if([loginSuccessAlert exists]){
+            [loginSuccessAlert tap];
+        }
     }
-    
-    XCUIElement *successMessageLabel = _app.staticTexts[@"Authentication status: authenticated as admin"];
-    XCTAssert(successMessageLabel.exists);
+
+    BOOL checkLoginSuccess = [_app.staticTexts[Authentication_SUCCESS] waitForExistenceWithTimeout:TIME_INTERVAL];
+    XCTAssert(checkLoginSuccess);
 }
 
 @end
