@@ -9,17 +9,25 @@
 #import <XCTest/XCTest.h>
 
 #define USER_NAME                         @"admin"
+//#define USER_NAME                         @"pratap"
 #define PASSWORD                          @"7layer"
 #define USER_TEXTFIELD                    @"Username"
 #define PASSWORD_TEXTFIELD                @"Password"
 #define OK_BUTTON                         @"OK"
-#define SUCCESS_MESSAGE                   @"Login was successful"
 #define Explicit_Login                    @"Explicit Login"
-#define Authentication_SUCCESS            @"Authentication status: authenticated as admin"
+#define INVOKE_API                        @"Invoke API"
+#define DE_REGISTER_DEVICE                @"De-register device"
+#define SUCCESS_MESSAGE                   @"Login was successful"
+#define INVOKING_APISUCCESS_MESSAGE       @"Invoking API Successful"
+#define Authentication_SUCCESS            @"Authentication status: authenticated as"
+#define DE_REGISTER_DEVICE_MESSAGE        @"Authentication status: not authenticated"
 #define SYSTEM_ALERT_HANDLER              @"SystemAlertHandler"
 #define ALLOW_ONCE                        @"Allow Once"
-#define TIME_INTERVAL                     5
-
+#define TIME_INTERVAL                     10
+#define MAS_UI_CANCEL                     @"masui-cancelBtn"
+#define MAS_UI_LogIn                      @"Login"
+#define MAS_UI_USER_TEXTFIELD             @"masui-usernameField"
+#define MAS_UI_PASSWORD_FIELD             @"masui-passwordField"
 
 
 @interface MASAuthenticationUITests : XCTestCase
@@ -31,36 +39,18 @@
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
-
+    
     // In UI tests it is usually best to stop immediately when a failure occurs.
     self.continueAfterFailure = NO;
-
+    
     // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     
     _app = [[XCUIApplication alloc] init];
-
+    
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
-}
-
-- (void)testExample {
-    // UI tests must launch the application that they test.
-    XCUIApplication *app = [[XCUIApplication alloc] init];
-    [app launch];
-
-    // Use recording to get started writing UI tests.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testLaunchPerformance {
-    if (@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *)) {
-        // This measures how long it takes to launch your application.
-        [self measureWithMetrics:@[[[XCTApplicationLaunchMetric alloc] init]] block:^{
-            [[[XCUIApplication alloc] init] launch];
-        }];
-    }
 }
 
 - (void)checkSystemAlerts {
@@ -76,26 +66,37 @@
     }];
 }
 
+- (void)checkUserLogIn {
+    
+    BOOL checkLoginAlert = [_app.alerts.textFields[USER_TEXTFIELD] waitForExistenceWithTimeout:TIME_INTERVAL];
+    if(checkLoginAlert) {
+        XCUIElement *userElement = _app.alerts.textFields[USER_TEXTFIELD];
+        XCUIElement *passwordElement = _app.alerts.secureTextFields[PASSWORD_TEXTFIELD];
+        
+        [userElement tap];
+        [userElement typeText:USER_NAME];
+        
+        [passwordElement tap];
+        [passwordElement typeText:PASSWORD];
+    }
+}
+-(NSString *)succeessUser {
+    return [NSString stringWithFormat:@"%@ %@",Authentication_SUCCESS,USER_NAME];
+}
+
 - (void)test_ExplicitLogIn {
     
     [_app launch];
     [self checkSystemAlerts];
-
+    
     XCUIElement *alertRegisterGW = _app.alerts.buttons[OK_BUTTON];
     if([alertRegisterGW exists]){
         [alertRegisterGW tap];
     }
-
+    
     [_app.staticTexts[Explicit_Login] tap];
     
-    XCUIElement *userElement = _app.alerts.textFields[USER_TEXTFIELD];
-    XCUIElement *passwordElement = _app.alerts.secureTextFields[PASSWORD_TEXTFIELD];
-    
-    [userElement tap];
-    [userElement typeText:USER_NAME];
-    
-    [passwordElement tap];
-    [passwordElement typeText:PASSWORD];
+    [self checkUserLogIn];
     
     XCUIElement *okButton = _app.alerts.buttons[OK_BUTTON];
     if([okButton exists]){
@@ -103,18 +104,106 @@
     }
     
     BOOL okButtonLoginSuccess = [_app.alerts.buttons[OK_BUTTON] waitForExistenceWithTimeout:TIME_INTERVAL];
-    XCTAssert(okButtonLoginSuccess);
     
     if(okButtonLoginSuccess) {
-        XCTAssert([_app.alerts.staticTexts[SUCCESS_MESSAGE] exists]);
+
+        XCUIElement *successMessage = _app.alerts.staticTexts[SUCCESS_MESSAGE];
+        if ([successMessage exists]) {
+            XCTAssert(successMessage);
+        } else {
+            XCTAssert(successMessage);
+        }
+
         XCUIElement *loginSuccessAlert = _app.alerts.buttons[OK_BUTTON];
         if([loginSuccessAlert exists]){
             [loginSuccessAlert tap];
         }
+    } else {
+        XCTAssert(okButtonLoginSuccess);
     }
-
-    BOOL checkLoginSuccess = [_app.staticTexts[Authentication_SUCCESS] waitForExistenceWithTimeout:TIME_INTERVAL];
+    
+    BOOL checkLoginSuccess = [_app.staticTexts[[self succeessUser]] waitForExistenceWithTimeout:TIME_INTERVAL];
     XCTAssert(checkLoginSuccess);
+}
+
+- (void)test_InvokeAPILogIn {
+    
+    [_app launch];
+    
+    [self checkSystemAlerts];
+    
+    XCUIElement *alertRegisterGW = _app.alerts.buttons[OK_BUTTON];
+    if([alertRegisterGW exists]) {
+        [alertRegisterGW tap];
+    }
+    
+    [_app.staticTexts[INVOKE_API] tap];
+    
+    BOOL masuiCancelBtn = [_app.buttons[MAS_UI_CANCEL] waitForExistenceWithTimeout:TIME_INTERVAL];
+    
+    if(masuiCancelBtn) {
+        
+        XCUIElement *userElement = _app.textFields[MAS_UI_USER_TEXTFIELD];
+        XCUIElement *passwordElement = _app.secureTextFields[MAS_UI_PASSWORD_FIELD];
+        
+        [userElement tap];
+        [userElement typeText:USER_NAME];
+        
+        [passwordElement tap];
+        [passwordElement typeText:PASSWORD];
+        
+        XCUIElement *logInElement = _app.staticTexts[MAS_UI_LogIn];
+        [logInElement tap];
+        
+    } else {
+        [self checkUserLogIn];
+        
+        XCUIElement *okButton = _app.alerts.buttons[OK_BUTTON];
+        if([okButton exists]){
+            [okButton tap];
+        }
+        
+        BOOL okButtonLoginSuccess = [_app.alerts.buttons[OK_BUTTON] waitForExistenceWithTimeout:TIME_INTERVAL];
+        
+        if(okButtonLoginSuccess) {
+            XCUIElement *successInvokeMessage = _app.alerts.staticTexts[INVOKING_APISUCCESS_MESSAGE];
+            if ([successInvokeMessage exists]) {
+                XCTAssert(successInvokeMessage);
+            } else {
+                XCTAssertFalse(successInvokeMessage);
+            }
+            
+            XCUIElement *loginSuccessAlert = _app.alerts.buttons[OK_BUTTON];
+            if([loginSuccessAlert exists]){
+                [loginSuccessAlert tap];
+            }
+        } else {
+            XCTAssert(okButtonLoginSuccess);
+        }
+    }
+    BOOL checkLoginSuccess = [_app.staticTexts[[self succeessUser]] waitForExistenceWithTimeout:TIME_INTERVAL];
+    XCTAssert(checkLoginSuccess);
+}
+
+- (void)test_DeRegisterDevice {
+    [_app launch];
+    
+    [self checkSystemAlerts];
+    
+    XCUIElement *alertRegisterGW = _app.alerts.buttons[OK_BUTTON];
+    if([alertRegisterGW exists]) {
+        [alertRegisterGW tap];
+    }
+    
+    [_app.staticTexts[DE_REGISTER_DEVICE] tap];
+    
+    XCUIElement *deRegisterDevice = _app.staticTexts[DE_REGISTER_DEVICE_MESSAGE];
+    
+    NSPredicate *exists = [NSPredicate predicateWithFormat:@"exists == 1"];
+    [self expectationForPredicate:exists evaluatedWithObject:deRegisterDevice handler:nil];
+    [self waitForExpectationsWithTimeout:TIME_INTERVAL handler:nil];
+    
+    XCTAssert([deRegisterDevice exists]);
 }
 
 @end
