@@ -137,15 +137,17 @@
         [alertRegisterGW tap];
     }
     
-    [_app.staticTexts[DE_REGISTER_DEVICE] tap];
+    BOOL userAlreadyRegistered = [_app.staticTexts[[self succeessUser]] waitForExistenceWithTimeout:TIME_INTERVAL];
     
-    XCUIElement *deRegisterDevice = _app.staticTexts[DE_REGISTER_DEVICE_MESSAGE];
-    
-    NSPredicate *exists = [NSPredicate predicateWithFormat:@"exists == 1"];
-    [self expectationForPredicate:exists evaluatedWithObject:deRegisterDevice handler:nil];
-    [self waitForExpectationsWithTimeout:TIME_INTERVAL handler:nil];
-    
-    XCTAssert([deRegisterDevice exists]);
+    if(userAlreadyRegistered) {
+        [_app.staticTexts[DE_REGISTER_DEVICE] tap];
+        
+        XCUIElement *deRegisterDevice = _app.staticTexts[DE_REGISTER_DEVICE_MESSAGE];
+        NSPredicate *exists = [NSPredicate predicateWithFormat:@"exists == 1"];
+        [self expectationForPredicate:exists evaluatedWithObject:deRegisterDevice handler:nil];
+        [self waitForExpectationsWithTimeout:TIME_INTERVAL handler:nil];
+        XCTAssert([deRegisterDevice exists]);
+    }
     
     [_app.staticTexts[INVOKE_API] tap];
     
