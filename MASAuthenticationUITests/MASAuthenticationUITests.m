@@ -137,6 +137,16 @@
         [alertRegisterGW tap];
     }
     
+    [_app.staticTexts[DE_REGISTER_DEVICE] tap];
+    
+    XCUIElement *deRegisterDevice = _app.staticTexts[DE_REGISTER_DEVICE_MESSAGE];
+    
+    NSPredicate *exists = [NSPredicate predicateWithFormat:@"exists == 1"];
+    [self expectationForPredicate:exists evaluatedWithObject:deRegisterDevice handler:nil];
+    [self waitForExpectationsWithTimeout:TIME_INTERVAL handler:nil];
+    
+    XCTAssert([deRegisterDevice exists]);
+    
     [_app.staticTexts[INVOKE_API] tap];
     
     BOOL masuiCancelBtn = [_app.buttons[MAS_UI_CANCEL] waitForExistenceWithTimeout:TIME_INTERVAL];
