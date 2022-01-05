@@ -15,6 +15,7 @@
 		CB4321E21D6615D700FFCF20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB4321E11D6615D700FFCF20 /* Assets.xcassets */; };
 		CB4321E51D6615D700FFCF20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB4321E31D6615D700FFCF20 /* LaunchScreen.storyboard */; };
 		CB4321E81D6615D700FFCF20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB4321E61D6615D700FFCF20 /* Main.storyboard */; };
+		FB41FE1327859B6B00BC8C70 /* Credentials.json in Resources */ = {isa = PBXBuildFile; fileRef = FB41FE1227859B6B00BC8C70 /* Credentials.json */; };
 		FBF0485D27635CD900B37AEF /* MASAuthenticationUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF0485C27635CD900B37AEF /* MASAuthenticationUITests.m */; };
 		FBF0485F27635CD900B37AEF /* MASAuthenticationUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF0485E27635CD900B37AEF /* MASAuthenticationUITestsLaunchTests.m */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		CB4321E91D6615D700FFCF20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB4321EF1D6615E200FFCF20 /* MASAuthentication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MASAuthentication.entitlements; sourceTree = "<group>"; };
 		D12DDBA009D4FA9340D33A7A /* libPods-MASAuthentication.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MASAuthentication.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB41FE1227859B6B00BC8C70 /* Credentials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Credentials.json; sourceTree = "<group>"; };
 		FBF0485A27635CD900B37AEF /* MASAuthenticationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MASAuthenticationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF0485C27635CD900B37AEF /* MASAuthenticationUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASAuthenticationUITests.m; sourceTree = "<group>"; };
 		FBF0485E27635CD900B37AEF /* MASAuthenticationUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASAuthenticationUITestsLaunchTests.m; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		FBF0485B27635CD900B37AEF /* MASAuthenticationUITests */ = {
 			isa = PBXGroup;
 			children = (
+				FB41FE1227859B6B00BC8C70 /* Credentials.json */,
 				FBF0485C27635CD900B37AEF /* MASAuthenticationUITests.m */,
 				FBF0485E27635CD900B37AEF /* MASAuthenticationUITestsLaunchTests.m */,
 			);
@@ -271,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB41FE1327859B6B00BC8C70 /* Credentials.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
